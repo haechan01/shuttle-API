@@ -12,16 +12,9 @@ This API is built using Express, Firebase Functions, and Firebase Firestore. It 
 
 ## Endpoints
 
-### 1. `GET /hello-world`
 
-Returns a simple "Hello World!" message.
 
-- **Method**: `GET`
-- **URL**: `/hello-world`
-- **Response**: 
-  - `200 OK`: Returns a plain text response with the message `Hello world!`
-
-### 2. `POST /api/update-eta`
+### 1. `POST /api/update-eta`
 
 Calculates travel time using the OSRM public API and updates the estimated travel time and distance for a bus in the Firestore database.
 
@@ -43,17 +36,17 @@ Response:
 ### 3. POST /api/create
 Creates a new product entry in the Firestore database.
 
-Method: POST
-URL: /api/create
-Request Body:
-json
-코드 복사
-{
-  "id": "string",
-  "name": "string",
-  "description": "string",
-  "price": "number"
-}
+- **Method**: `POST`
+- **URL**: `/api/create`
+- **Request Body**:
+  ```json
+  {
+    "id": "string",
+    "name": "string",
+    "description": "string",
+    "price": "number"
+  }
+
 Response:
 200 OK: Returns a success message.
 500 Internal Server Error: Returns an error message.
@@ -62,12 +55,11 @@ Response:
 ### 4. POST /api/signup
 Registers a student for the shuttle bus service and saves the data in Firestore.
 
-Method: POST
-URL: /api/signup
-Request Body:
-json
-코드 복사
-{
+- **Method**: `POST`
+- **URL**: `/api/signup`
+- **Request Body**:
+  ```json
+  {
   "id": "string",
   "firstname": "string",
   "lastname": "string",
@@ -81,8 +73,9 @@ Response:
 ### 5. GET /api/get-signups
 Fetches all the student sign-ups for the current day from the Firestore database.
 
-Method: GET
-URL: /api/get-signups
+- **Method**: `GET`
+- **URL**:  `/api/get-signups`
+  
 Response:
 200 OK: Returns an array of sign-up objects.
 500 Internal Server Error: Returns an error message.
@@ -91,17 +84,16 @@ Response:
 ### 6. PUT /api/edit-signup/:docId
 Edits an existing student sign-up entry in Firestore.
 
-Method: PUT
-URL: /api/edit-signup/:docId
-URL Parameters:
-:docId: Document ID of the sign-up to be edited.
+- **Method**: PUT
+- **URL**:  /api/edit-signup/:docId
+- **URL Parameters**: :docId: Document ID of the sign-up to be edited.
 Request Body:
-json
-코드 복사
-{
-  "location": "string",
-  "time": "string"
-}
+  ```json
+  {
+    "location": "string",
+    "time": "string"
+  }
+  
 Response:
 200 OK: Returns a success message.
 404 Not Found: Returns an error if the sign-up is not found.
@@ -111,9 +103,9 @@ Response:
 ### 7. DELETE /api/delete-signup/:docId
 Deletes a student sign-up entry from Firestore.
 
-Method: DELETE
-URL: /api/delete-signup/:docId
-URL Parameters:
+- **Method**: DELETE
+- **URL**:  /api/delete-signup/:docId
+- **URL Parameters**: 
 :docId: Document ID of the sign-up to be deleted.
 Response:
 200 OK: Returns a success message.
@@ -124,18 +116,18 @@ Response:
 ### 8. POST /api/group/:busId
 Groups students into a bus based on the provided bus ID.
 
-Method: POST
-URL: /api/group/:busId
-URL Parameters:
+- **Method**:  POST
+- **URL**:/api/group/:busId
+- **URL Parameters**: 
 :busId: ID of the bus to group students into.
 Request Body:
-json
-코드 복사
-{
-  "documentIds": ["string"],
-  "location": "string",
-  "time": "string"
-}
+  ```json
+
+  {
+    "documentIds": ["string"],
+    "location": "string",
+    "time": "string"
+  }
 Response:
 200 OK: Returns a confirmation message.
 400 Bad Request: Returns an error for invalid input.
@@ -145,18 +137,18 @@ Response:
 ### 9. PUT /api/group/:busId
 Updates an existing bus group in Firestore.
 
-Method: PUT
-URL: /api/group/:busId
-URL Parameters:
+- **Method**: PUT
+- **URL**: /api/group/:busId
+- **URL Parameters**: 
 :busId: ID of the bus group to be updated.
 Request Body:
-json
-코드 복사
-{
-  "documentIds": ["string"],
-  "location": "string",
-  "time": "string"
-}
+  ```json
+
+  {
+    "documentIds": ["string"],
+    "location": "string",
+    "time": "string"
+  }
 Response:
 200 OK: Returns a success message.
 400 Bad Request: Returns an error for invalid input.
@@ -164,15 +156,16 @@ Response:
 10. DELETE /api/group/:busId
 Deletes a bus group and updates student sign-ups accordingly.
 
-Method: DELETE
-URL: /api/group/:busId
-URL Parameters:
+- **Method**: DELETE
+- **URL**:  /api/group/:busId
+- **URL Parameters**:
 :busId: ID of the bus group to be deleted.
 Response:
 200 OK: Returns a success message.
 404 Not Found: Returns an error if the group is not found.
 500 Internal Server Error: Returns an error message.
-Error Handling
+  
+### Error Handling
 The API returns appropriate HTTP status codes and error messages for different error scenarios, such as missing parameters, server errors, or resource not found.
 
 ### Deployment
