@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function networkRequest () {
+        //     return new Promise((resolve) => {
+        //         setTimeout(()=>{
+        //             console.log("Data received");
+        //             resolve('server 1');
+        //         }, 2000)
+        //     });
+        // }
+
+        // async function getUser() {
+        //     await networkRequest();
+        //     await networkRequest();
+        //     return "user1"
+        // }
+
+        // function getUserPromise() {
+        //     return networkRequest()
+        //     .then(() => {
+        //         return networkRequest()
+        //     })
+        //     .then(() => {
+        //         return 'promise coding'
+        //     })
+        // }
+
+
+        // const user = getUser();
+        // user.then((name) => console.log(name))
+
+        function networkRequest () {
+            return new Promise((resolve) => {
+                setTimeout(()=>{
+                    resolve('');
+                }, 2000)
+            });
+        }
+
+        async function getUser() {
+            throw new Error('an error')
+            await networkRequest();
+            return "user1"
+        }
+
+        async function getTodo(){
+            await networkRequest();
+            return ['eat dinner', 'study math']
+        }
+
+        async function getData() {
+            let user;
+            try {
+                user = await getUser();
+            } catch (error) {
+                console.log(error.message);
+                user = 'user'
+            }
+            // const user = await getUser();
+            const todo = await getTodo();
+            console.log(`Hey ${user} please ${todo}`)
+        }
+
+        getData()
+
+
+        function getName () {
+            return new Promise((resolve, reject)=>{
+                setTimeout(() => {
+                    resolve('James');
+                    // reject(new Error('error: no name'))
+                }, 1000)
+            })
+        }
+        function getTodo() {
+            return new Promise((resolve, reject)=>{
+                setTimeout(() => {
+                    resolve('eat food');
+                    // reject(new Error('error: no name'))
+                }, 2000)
+            })
+        }
+
+        // async function fetchData() {
+        //     const response = await fetch('http://127.0.0.1:5001/fir-crud-rest-api-68066/us-central1/app/api/read');
+        //     const data = await response.json();
+        //     console.log(data);
+        // }
+
+        // fetchData();
+
+
+
+    </script>
+</body>
+</html>
