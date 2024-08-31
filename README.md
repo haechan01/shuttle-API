@@ -168,49 +168,29 @@ Response:
 
 # Firestore Database Schema
 
-## 1. Products Collection
-
-Stores details about various products.
-
-- **Collection Name**: `products`
-- **Document ID**: Unique identifier for each product (e.g., product ID)
-- **Fields**:
-  - `name` (string): Name of the product
-  - `description` (string): Description of the product
-  - `price` (number): Price of the product
-
-### Example Document in `products` Collection
-  json
-  {
-    "name": "Shuttle Bus Ticket",
-    "description": "A ticket for the shuttle bus service.",
-    "price": 10.00
-  }
-
-
-## 2. SignUps Collection
+## 1. SignUps Collection
 Stores information about student sign-ups for the shuttle bus service. The collection name is dynamically based on the date.
 
 - **Collection Name**:YYYY-MM-DD (where YYYY-MM-DD is the current date in ISO format)
 - **Document ID**: Unique identifier for each sign-up (e.g., student ID-location)
 - **Fields**:
   -`firstname` (string): First name of the student
-  - `lastname` (string): Last name of the student
+  -`lastname` (string): Last name of the student
   -`location` (string): Location from where the student is signing up
   -`time` (string): Time of the sign-up
-  `group` (string, optional): The ID of the bus group the student is assigned to (used in grouping operations)
+  -`group` (string, optional): The ID of the bus group the student is assigned to (used in grouping operations)
 
 ### Example Document in YYYY-MM-DD Collection
   json
   {
   "firstname": "John",
   "lastname": "Doe",
-  "location": "Downtown",
+  "location": "StuFac",
   "time": "08:30",
-  "group": "bus123"  // Optional field for grouping
+  "group": "StuFac-08:40"  // group will be null by default, but we can have the driver group students
   }
 
-## 3. Groups Collection
+## 2. Groups Collection
 Stores information about bus groups and their members.
 
 Collection Name: groups
@@ -228,19 +208,19 @@ Collection Name: groups
     "time": "08:30"
   }
 
-## 4. ETAs Collection
+## 3. ETAs Collection
 Stores estimated travel times and distances between coordinates.
 
 - **Collection Name**: etas
-- **Document ID**: Unique identifier for each ETA record (e.g., bus ID)
+- **Document ID**: Unique identifier for each ETA record (this should be the bus ID)
 - **Fields**:
-- **eta** (number): Estimated travel time in minutes
-- **distance** (number): Distance between the start and end points in meters
+  - **eta** (number): Estimated travel time in minutes
+  - **distance** (number): Distance between the start and end points in meters
 
 ### Example Document in etas Collection
 json
 {
-  "eta": 45.5,
+  "eta": 15.5,
   "distance": 3940.0
 }
 
