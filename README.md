@@ -2,7 +2,7 @@
 
 ## Overview
 
-This API is built using Express, Firebase Functions, and Firebase Firestore. It provides functionality for calculating travel time, managing student sign-ups for shuttle buses, creating products, and organizing students into bus groups. The API interacts with a Firestore database for data storage and retrieval.
+This API is built using Express, Firebase Functions, and Firebase Firestore. It provides functionality for calculating travel time, managing student sign-ups for shuttle buses, and organizing students into bus groups. The API interacts with a Firestore database for data storage and retrieval.
 
 ## Initialization
 
